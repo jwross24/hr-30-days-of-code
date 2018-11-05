@@ -7,20 +7,21 @@
 if __name__ == '__main__':
     n = int(input())
 
-count = 0
-max_count = 0
+binary_string = ''
 
+# Convert the number to binary
 while n > 0:
-    # Convert the number to binary
     remainder = n % 2
     n = n // 2
+    binary_string = str(remainder) + binary_string
 
-    # Count the number of 1's in a row
-    if remainder == 1:
-        count = count + 1
-        if count >= max_count:
-            max_count = count
-    else:
-        count = 0
+# Count the number of consecutive 1's
+max_length = 0
 
-print(max_count)
+ones_list = binary_string.split('0')
+
+for item in ones_list:
+    if len(item) >= max_length:
+        max_length = len(item)
+
+print(max_length)
